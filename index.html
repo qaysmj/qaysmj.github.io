@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qays Mahamud · Cloud, DevOps &amp; Infrastructure</title>
+<meta name="description" content="Qays Mahamud: final-year Computer Science student at City St George's, University of London, heading into cloud, DevOps and infrastructure.">
+<meta property="og:title" content="Qays Mahamud · Cloud, DevOps & Infrastructure">
+<meta property="og:description" content="Final-year Computer Science student heading into cloud, DevOps and infrastructure, with three years of leading real operations.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1014'/%3E%3Ctext x='6' y='22' font-family='monospace' font-size='16' fill='%235CC9A7'%3E%3E_%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F4F4EF;--glass:rgba(244,244,239,.82);--ink:#12171C;--body:#2B333B;--muted:#56606A;
+  --line:#DADBD3;--strong:#12171C;--card:#FBFBF8;--soft:#ECECE5;--dot:rgba(18,23,28,.13);
+  --accent:#0B6E55;--on-accent:#FFFFFF;
+  --mono:'JetBrains Mono',ui-monospace,monospace;--serif:'Instrument Serif',Georgia,serif;
+}
+:root[data-theme="dark"]{
+  --bg:#0E1317;--glass:rgba(14,19,23,.8);--ink:#EDEEE8;--body:#C4CAD0;--muted:#9AA3AC;
+  --line:#252F38;--strong:#4A545D;--card:#141B21;--soft:#11181D;--dot:rgba(255,255,255,.07);
+  --accent:#5CC9A7;--on-accent:#0B1014;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #3B82F6;outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.mono{font-family:var(--mono)}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+.eyebrow{margin:0;font-family:var(--mono);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.eyebrow b{color:var(--accent);font-weight:500}
+.h-big{margin:20px 0 0;font-size:clamp(30px,3.6vw,44px);font-weight:600;letter-spacing:-.025em;line-height:1.1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.navlink{color:var(--body);text-decoration:none;padding:12px 0;transition:opacity .15s}.navlink:hover{opacity:.6}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:10px;text-decoration:none;font-weight:500;font-size:16px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--accent);color:var(--on-accent);font-weight:600}
+.btn-line{border:1px solid var(--strong);color:var(--ink);background:transparent}
+.card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(0,0,0,.5)}
+.pill{min-height:44px;padding:0 18px;border-radius:999px;font-size:15px;font-weight:500;border:1px solid var(--strong);background:transparent;color:var(--ink);transition:background .2s,color .2s}
+.pill[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pulse{width:8px;height:8px;border-radius:50%;background:#2FB386;animation:pulse 2.2s ease-in-out infinite;display:inline-block}
+.fade{animation:fade .45s ease both}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(47,179,134,.55)}50%{box-shadow:0 0 0 7px rgba(47,179,134,0)}}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* nav */
+header{position:sticky;top:0;z-index:10;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 28px;padding-top:8px;padding-bottom:8px}
+.brand{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;padding:12px 0}
+.clock{font-family:var(--mono);font-size:12px;color:var(--muted);padding:4px 10px;border:1px solid var(--line);border-radius:999px}
+.navlinks{display:flex;flex-wrap:wrap;align-items:center;gap:2px 22px;font-size:15px}
+.nav-cta{color:var(--bg);background:var(--ink);text-decoration:none;padding:0 16px;min-height:40px;display:inline-flex;align-items:center;border-radius:8px;font-weight:500}
+.theme{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.theme .sun{display:none}:root[data-theme="dark"] .theme .sun{display:block}:root[data-theme="dark"] .theme .moon{display:none}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:24px 24px;-webkit-mask-image:linear-gradient(to bottom,black 30%,transparent 95%);mask-image:linear-gradient(to bottom,black 30%,transparent 95%)}
+.hero-in{position:relative;padding-top:88px;padding-bottom:96px;display:flex;flex-wrap:wrap;align-items:center;gap:56px}
+.badge{margin:0 0 32px;display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-family:var(--mono);font-size:13px;color:var(--body)}
+h1{margin:0;font-size:clamp(56px,9vw,120px);line-height:.92;letter-spacing:-.045em;font-weight:600}
+.rot{margin:32px 0 0;font-size:clamp(26px,3.4vw,40px);line-height:1.15;letter-spacing:-.02em;font-weight:500}
+.rot .serif{display:inline-block;font-size:1.15em}
+.lede{margin:20px 0 0;max-width:560px;font-size:18px;line-height:1.6;color:var(--body)}
+
+/* terminal */
+.term-card{border-radius:16px;background:#0B1014;border:1px solid #232C34;color:#D6DCE1;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.term-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid #1E262D;background:#0E141A}
+.term-bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.term{height:300px;overflow-y:auto;padding:18px 20px 6px;font-family:var(--mono);font-size:13.5px;line-height:1.7}
+.term p{margin:0;white-space:pre-wrap}
+.term::-webkit-scrollbar{width:8px}.term::-webkit-scrollbar-thumb{background:#2A343C;border-radius:8px}
+.l-cmd{color:#5CC9A7}.l-out{color:#C3CBD2}.l-sys{color:#7E8A94}.l-err{color:#F08A7E}.l-ok{color:#8BE0B9}
+.term-form{display:flex;align-items:center;gap:10px;padding:8px 20px 16px;font-family:var(--mono);font-size:13.5px}
+.term-form input{flex:1;min-width:0;min-height:36px;background:transparent;border:0;outline:none;color:#E6EAED;font:inherit;caret-color:#5CC9A7}
+.term-form input:focus-visible{outline:none}
+.quick{display:flex;flex-wrap:wrap;gap:6px;padding:12px 16px 16px;border-top:1px solid #1E262D}
+.quick button{min-height:34px;padding:0 11px;border-radius:6px;border:1px solid #2A343C;background:#121920;color:#B9C2C9;font-family:var(--mono);font-size:12px}
+.quick button:hover{border-color:#5CC9A7;color:#E6EAED}
+
+/* marquee */
+.marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card);overflow:hidden;padding:18px 0}
+.marquee{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.marquee-wrap:hover .marquee{animation-play-state:paused}
+.marquee span{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font-size:20px;font-weight:500;color:var(--body);white-space:nowrap}
+.marquee span b{color:var(--accent);font-weight:400}
+
+/* sections */
+section.block{border-top:1px solid var(--line)}
+.sec{padding-top:112px;padding-bottom:112px}
+.split{display:flex;flex-wrap:wrap;gap:48px 64px}
+.about-lead{margin:28px 0 0;font-size:clamp(28px,3.6vw,44px);line-height:1.18;letter-spacing:-.025em;font-weight:500}
+.cols{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 40px;font-size:17px;line-height:1.7;color:var(--body)}
+.cols p{margin:0}
+.now{flex:1 1 320px;min-width:0;align-self:flex-start;border-radius:16px;border:1px solid var(--line);background:var(--card);padding:28px}
+.now dl{margin:20px 0 0;display:flex;flex-direction:column;gap:18px}
+.now dl div{display:grid;grid-template-columns:88px 1fr;gap:12px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.now dl div:last-child{border-bottom:0;padding-bottom:0}
+.now dt{font-family:var(--mono);font-size:12px;color:var(--accent);padding-top:3px}
+.now dd{margin:0;font-size:15px;line-height:1.5}
+
+/* timeline */
+.timeline{flex:999 1 560px;min-width:0;list-style:none;margin:0;padding:0 0 0 28px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.timeline li{position:relative}
+.timeline .dot{position:absolute;left:-38px;top:30px;width:14px;height:14px;border-radius:50%;border:3px solid var(--bg);background:var(--strong);transition:background .25s}
+.job{border-radius:14px;border:1px solid var(--line);background:var(--card);transition:border-color .25s}
+.job button.head{width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px 24px;padding:22px 24px;background:transparent;border:0;text-align:left;color:var(--ink)}
+.job .meta{flex:1 1 260px;min-width:0}
+.job .dates{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:6px}
+.job .co{display:block;font-size:22px;font-weight:600}
+.job .role{display:block;margin-top:2px;font-size:16px;color:var(--accent);font-weight:500}
+.job .chev{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--line);font-size:20px;transition:transform .25s}
+.job .detail{padding:0 24px 24px}
+.job .detail p{margin:0;font-size:16px;line-height:1.65;color:var(--body)}
+.job.open{border-color:var(--accent)}
+.job.open .chev{transform:rotate(45deg)}
+li.open .dot{background:var(--accent)}
+.tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:5px 11px;border-radius:999px;background:var(--soft);font-family:var(--mono);font-size:12px;color:var(--body)}
+.tag-line{padding:4px 10px;border-radius:999px;border:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--body)}
+
+/* projects */
+.projects{background:var(--soft)}
+.head-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 64px}
+.grid{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.proj{display:flex;flex-direction:column;gap:10px;padding:28px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.proj .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.proj .code{min-width:44px;height:44px;padding:0 8px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:var(--soft);font-family:var(--mono);font-size:13px;font-weight:500;color:var(--accent)}
+.proj .kind{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.proj h3{margin:10px 0 0;font-size:22px;font-weight:600;letter-spacing:-.01em}
+.proj p{margin:0;font-size:15px;line-height:1.6;color:var(--body);flex-grow:1}
+.proj .tags{margin-top:0;padding-top:6px;gap:6px}
+
+/* skills */
+.chips{flex:999 1 560px;min-width:0;display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+.chip{padding:12px 18px;border-radius:12px;font-size:16px;font-weight:500;border:1px solid var(--line);background:var(--card);color:var(--muted);transition:background .25s,color .25s,border-color .25s}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.path-card{flex:1 1 300px;min-width:0;border-radius:16px;padding:28px;background:var(--card);border:1px solid var(--line)}
+.path-card .big{margin:14px 0 0;font-size:44px;font-weight:600;letter-spacing:-.03em;line-height:1}
+.path-card .big small{font-size:18px;font-weight:500;color:var(--muted);letter-spacing:0}
+.path-card .note{margin:18px 0 0;font-size:16px;line-height:1.6;color:var(--body)}
+
+/* contact */
+.contact{background:#0B1014;color:#EDEEE8;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px}
+.contact .wrap{position:relative;padding-top:128px;padding-bottom:56px}
+.contact .eyebrow{color:#98A1AA}.contact .eyebrow b{color:#5CC9A7}
+.contact-lead{margin:28px 0 0;max-width:900px;font-size:clamp(40px,6.5vw,84px);line-height:1;letter-spacing:-.04em;font-weight:600}
+.contact-lead .serif{color:#5CC9A7}
+.c-btns{margin-top:52px;display:flex;flex-wrap:wrap;gap:12px}
+.c-btns .btn{min-height:56px}
+.c-solid{background:#5CC9A7;color:#0B1014;font-weight:600}
+.c-line{border:1px solid #3A454E;color:#EDEEE8;background:transparent}
+.foot{margin-top:128px;padding-top:24px;border-top:1px solid #232C34;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:13px;color:#98A1AA}
+.foot p{margin:0}.foot a{color:#98A1AA;text-decoration:none}
+
+@media (max-width:640px){.hero-in{padding-top:56px}.sec{padding-top:80px;padding-bottom:80px}.navlink{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pulse,.fade,.marquee{animation:none}.card:hover,.btn:hover{transform:none}}
+</style>
+<script>
+try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.setAttribute('data-theme','dark');}catch(e){}
+</script>
+</head>
+<body>
+
+<header>
+<nav class="wrap" aria-label="Main">
+  <div style="display:flex;align-items:center;gap:18px">
+    <a href="#top" class="brand">~/qays<span style="color:var(--accent)">.sh</span></a>
+    <span class="clock">LDN <span data-clock>--:--</span></span>
+  </div>
+  <div class="navlinks">
+    <a href="#about" class="navlink">About</a>
+    <a href="#experience" class="navlink">Experience</a>
+    <a href="#projects" class="navlink">Projects</a>
+    <a href="#skills" class="navlink">Skills</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+    <button type="button" class="theme" id="theme" aria-label="Toggle dark mode" aria-pressed="false">
+      <svg class="sun" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</nav>
+</header>
+
+<main>
+
+<section id="top" class="hero">
+  <div class="wrap hero-in">
+    <div style="flex:999 1 520px;min-width:0">
+      <p class="badge"><span class="pulse" aria-hidden="true"></span>Open to 2027 graduate roles</p>
+      <h1>Qays<br>Mahamud<span style="color:var(--accent)">.</span></h1>
+      <p class="rot">Building a career in <span class="serif" id="word">cloud.</span></p>
+      <p class="lede">Final-year Computer Science student at City St George's, University of London, with three years of leading real operations behind me.</p>
+      <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="mailto:qaysm90@gmail.com" class="btn btn-solid">Get in touch <span aria-hidden="true">→</span></a>
+        <a href="#projects" class="btn btn-line">See my work</a>
+      </div>
+    </div>
+
+    <div style="flex:1 1 400px;min-width:0;max-width:520px">
+      <div class="term-card card">
+        <div class="term-bar">
+          <i style="background:#E5675B"></i><i style="background:#E2B34A"></i><i style="background:#4DBB6E"></i>
+          <span class="mono" style="margin-left:10px;font-size:12px;color:#8D98A2">qays@london: ~ — zsh</span>
+        </div>
+        <div class="term" id="term" aria-live="polite"></div>
+        <form class="term-form" id="term-form">
+          <label for="term-input" style="color:#5CC9A7">$<span class="sr">Type a command</span></label>
+          <input id="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type help and press enter">
+        </form>
+        <div class="quick" id="quick"></div>
+      </div>
+      <p style="margin:12px 0 0;font-size:13px;color:var(--muted);text-align:center">It's a real terminal. Try <span class="mono">sudo hire qays</span></p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap" aria-hidden="true"><div class="marquee" id="marquee"></div></div>
+
+<section id="about">
+  <div class="wrap sec split">
+    <div style="flex:999 1 560px;min-width:0">
+      <h2 class="eyebrow"><b>01</b> / About</h2>
+      <p class="about-lead">I like the parts of computing that <span class="serif">keep everything else running</span>: networks, servers, cloud platforms and the automation that ties them together.</p>
+      <div class="cols">
+        <p>I'm in my final year of Computer Science, taking Cloud Computing and Intro to AI alongside my individual project. Outside lectures I'm building hands-on skills in Linux, PowerShell and cloud fundamentals on AWS and Azure, on top of CompTIA A+ and Network+ training and an IT support traineeship.</p>
+        <p>For the last three years I've also managed stores for Mik Treatz, a London dessert business: hiring, scheduling, admin and day-to-day operations across multiple sites. It taught me how to keep things running under pressure, which is most of what infrastructure work is about.</p>
+      </div>
+    </div>
+    <aside class="now" aria-label="What I'm doing now">
+      <p class="eyebrow" style="display:flex;align-items:center;gap:10px;font-size:12px"><span class="pulse" aria-hidden="true"></span>Now</p>
+      <dl>
+        <div><dt>Studying</dt><dd>Final year: Cloud Computing, Intro to AI, Theory of Computation and my Individual Project</dd></div>
+        <div><dt>Learning</dt><dd>Linux, PowerShell automation, AWS and Azure</dd></div>
+        <div><dt>Working</dt><dd>Multi-store line management at Mik Treatz</dd></div>
+        <div><dt>Seeking</dt><dd>2027 graduate roles in cloud, DevOps and tech consulting</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section id="experience" class="block">
+  <div class="wrap sec split" style="gap:32px 64px">
+    <div style="flex:1 1 260px">
+      <h2 class="eyebrow"><b>02</b> / Experience</h2>
+      <p class="h-big" style="font-size:clamp(26px,3vw,36px);line-height:1.15">Leading teams, supporting systems, speaking to crowds.</p>
+      <p style="margin:16px 0 0;font-size:14px;color:var(--muted)">Tap a role to expand it</p>
+    </div>
+    <ol class="timeline" id="jobs"></ol>
+  </div>
+</section>
+
+<section id="projects" class="block projects">
+  <div class="wrap sec">
+    <div class="head-row">
+      <div>
+        <h2 class="eyebrow"><b>03</b> / Projects</h2>
+        <p class="h-big">Things I've <span class="serif">built</span></p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+        <div role="group" aria-label="Filter projects" id="filters" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+        <p aria-live="polite" id="count" class="mono" style="margin:0;font-size:12px;color:var(--muted)"></p>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="skills" class="block">
+  <div class="wrap sec">
+    <div class="head-row" style="gap:24px 64px">
+      <div style="max-width:620px">
+        <h2 class="eyebrow"><b>04</b> / Skill map</h2>
+        <p class="h-big">Pick a role. See how I fit.</p>
+      </div>
+      <div role="group" aria-label="Choose a role" id="paths" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+    </div>
+    <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:32px">
+      <div class="chips" id="chips"></div>
+      <div class="path-card" id="path-card"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2 class="eyebrow"><b>05</b> / Contact</h2>
+    <p class="contact-lead">Hiring for cloud, DevOps or tech consulting? <span class="serif">Let's talk.</span></p>
+    <div class="c-btns">
+      <a href="mailto:qaysm90@gmail.com" class="btn c-solid">qaysm90@gmail.com <span aria-hidden="true">→</span></a>
+      <button type="button" id="copy" class="btn c-line" aria-live="polite">
+        <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy email</span>
+      </button>
+      <a href="https://www.linkedin.com/in/qays-mahamud-35a0b4341" target="_blank" rel="noopener" class="btn c-line">LinkedIn</a>
+    </div>
+    <div class="foot">
+      <p>© 2026 Qays Mahamud · London · <span data-clock>--:--</span></p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  /* theme */
+  var root = document.documentElement, themeBtn = $('theme');
+  function syncTheme(){ themeBtn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false'); }
+  themeBtn.addEventListener('click', function(){
+    var dark = root.getAttribute('data-theme') !== 'dark';
+    if (dark) root.setAttribute('data-theme','dark'); else root.removeAttribute('data-theme');
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch(e){}
+    syncTheme();
+  });
+  syncTheme();
+
+  /* clock + rotating word */
+  var words = ['cloud.','DevOps.','infrastructure.','automation.'], wi = 0, wordEl = $('word');
+  function tick(){
+    var t = '';
+    try { t = new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit'}); } catch(e){}
+    document.querySelectorAll('[data-clock]').forEach(function(el){ el.textContent = t; });
+  }
+  tick(); setInterval(tick, 10000);
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setInterval(function(){
+    wi = (wi + 1) % words.length;
+    wordEl.textContent = words[wi];
+    if (!reduce){ wordEl.classList.remove('fade'); void wordEl.offsetWidth; wordEl.classList.add('fade'); }
+  }, 2600);
+
+  /* terminal */
+  var C = {
+    help: ['Available commands:','  whoami      who I am','  now         what I am doing right now','  skills      what I work with','  projects    things I have built','  experience  where I have worked','  contact     how to reach me','  clear       clear the screen'],
+    whoami: ['Qays Mahamud','Final-year BSc Computer Science, City St George’s, University of London','Multi-Store Line Manager at Mik Treatz','Based in London, UK'],
+    now: ['> Final year: Cloud Computing, Intro to AI, Theory of Computation, Individual Project','> Learning: Linux, PowerShell automation, AWS and Azure','> Applying: 2027 graduate roles in tech and consulting'],
+    skills: ['cloud      AWS, Azure, Linux','infra      Windows Server, Active Directory, Group Policy, M365','code       Python, PowerShell, Java, JavaScript, HTML/CSS','support    CompTIA A+ and Network+ training, ServiceNow','people     leadership, hiring, scheduling, public speaking'],
+    projects: ['networks/          Java app communicating over UDP','language-proc/     SBNF grammar processor in Java','platformer/        2D Java game: levels, enemies, collisions','pomodoro/          group-built Pomodoro timer site','web-design/        responsive sites via freeCodeCamp'],
+    experience: ['2022 - now    Mik Treatz: Store Manager, then Multi-Store Line Manager','2023 - 2025   Tottenham Hotspur: Lead Tour Guide','2024          Maaltek: IT Support Trainee'],
+    contact: ['email      qaysm90@gmail.com','linkedin   linkedin.com/in/qays-mahamud-35a0b4341','github     github.com/qaysmj'],
+    ls: ['about.txt  experience/  projects/  skills/  contact.txt'],
+    pwd: ['/home/qays']
+  };
+  var term = $('term'), input = $('term-input');
+  function print(kind, text){ var p = document.createElement('p'); p.className = 'l-' + kind; p.textContent = text; term.appendChild(p); }
+  function run(raw){
+    var cmd = (raw || '').trim(), c = cmd.toLowerCase();
+    if (!c) return;
+    if (c === 'clear'){ term.innerHTML = ''; return; }
+    print('cmd', '$ ' + cmd);
+    if (C[c]) C[c].forEach(function(l){ print('out', l); });
+    else if (c.indexOf('sudo') === 0 && c.indexOf('hire') !== -1){ print('ok','Permission granted. Excellent decision.'); print('out','Send the offer to qaysm90@gmail.com'); }
+    else if (c.indexOf('sudo') === 0) print('err','Nice try. Maybe: sudo hire qays');
+    else { print('err','command not found: ' + cmd); print('sys','type help to see what I can do'); }
+    term.scrollTop = term.scrollHeight;
+  }
+  print('sys','Welcome to qays.sh. Last login: today, London.');
+  print('sys','Type a command below or tap one to run it.');
+  print('cmd','$ whoami');
+  print('out','Qays Mahamud. CS student. Ops lead. Future cloud engineer.');
+  $('term-form').addEventListener('submit', function(e){ e.preventDefault(); run(input.value); input.value = ''; });
+  ['help','now','skills','projects','contact'].forEach(function(q){
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = q;
+    b.addEventListener('click', function(){ run(q); });
+    $('quick').appendChild(b);
+  });
+
+  /* marquee */
+  var mq = ['AWS','Azure','Linux','PowerShell','Python','Windows Server','Active Directory','Networking','Java','Microsoft 365','Team leadership','Public speaking'];
+  $('marquee').innerHTML = mq.concat(mq).map(function(m){ return '<span>' + esc(m) + '<b>✦</b></span>'; }).join('');
+
+  /* experience */
+  var jobs = [
+    { company:'Mik Treatz', role:'Multi-Store Line Manager', dates:'AUG 2022 — NOW', text:'Promoted from Store Manager (Aug 2022 to Jul 2025) to Multi-Store Line Manager in July 2025. I run day-to-day operations across multiple stores for a growing London dessert business: hiring and onboarding staff, building rotas, handling admin and keeping service consistent between sites.', tags:['Leadership','Hiring','Scheduling','Operations'] },
+    { company:'Maaltek Training & Consulting', role:'IT Support Trainee', dates:'OCT — DEC 2024', text:'Hands-on with Windows Server, Active Directory, Group Policy and Microsoft 365, working tickets through ServiceNow, Track-IT and LANDesk, and troubleshooting network and hardware issues.', tags:['Windows Server','Active Directory','M365','ServiceNow'] },
+    { company:'Tottenham Hotspur', role:'Lead Tour Guide', dates:'AUG 2023 — AUG 2025', text:'Led stadium tours for groups of visitors: public speaking, reading a room and keeping a schedule on track while making it feel effortless.', tags:['Public speaking','Customer experience'] }
+  ];
+  var openJob = 0;
+  function renderJobs(){
+    $('jobs').innerHTML = jobs.map(function(j, i){
+      var o = i === openJob;
+      return '<li class="' + (o ? 'open' : '') + '"><span class="dot" aria-hidden="true"></span>' +
+        '<div class="job' + (o ? ' open' : '') + '">' +
+        '<button type="button" class="head" data-i="' + i + '" aria-expanded="' + o + '">' +
+        '<span class="meta"><span class="dates">' + esc(j.dates) + '</span><span class="co">' + esc(j.company) + '</span><span class="role">' + esc(j.role) + '</span></span>' +
+        '<span class="chev" aria-hidden="true">+</span></button>' +
+        (o ? '<div class="detail fade"><p>' + esc(j.text) + '</p><div class="tags">' + j.tags.map(function(t){ return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</div></div>' : '') +
+        '</div></li>';
+    }).join('');
+  }
+  $('jobs').addEventListener('click', function(e){
+    var b = e.target.closest('button.head'); if (!b) return;
+    var i = +b.getAttribute('data-i'); openJob = openJob === i ? -1 : i; renderJobs();
+    var nb = $('jobs').querySelector('button[data-i="' + i + '"]'); if (nb) nb.focus();
+  });
+  renderJobs();
+
+  /* projects */
+  var projects = [
+    { code:'UDP', kind:'University', title:'Computer Networks Project', text:'A networked application in Java communicating over UDP, built for my computer networks module, working directly with sockets, packets and connectionless communication.', tags:['Java','UDP','Networking'], cats:['Java','Networking'] },
+    { code:'BNF', kind:'University', title:'Language Processor', text:'A Java language processor built around SBNF (Simple BNF) grammars: reading a grammar definition and processing input against it.', tags:['Java','Parsing'], cats:['Java'] },
+    { code:'2D', kind:'University', title:'Platformer Game', text:'An object-oriented 2D platformer with multiple levels, collision detection, animation, enemies, coins and scoring.', tags:['Java','OOP'], cats:['Java'] },
+    { code:'25:00', kind:'Group project', title:'Pomodoro Website', text:'An interactive Pomodoro timer site built as a university group project, from planning and splitting the work to shipping a working site as a team.', tags:['HTML','CSS','JavaScript'], cats:['Web'] },
+    { code:'{ }', kind:'Self-taught', title:'Responsive Web Design', text:'Responsive web projects from the freeCodeCamp curriculum, alongside Python challenges on CodeWars.', tags:['HTML','CSS','Python'], cats:['Web'] }
+  ];
+  var filter = 'All';
+  function renderProjects(){
+    var shown = projects.filter(function(p){ return filter === 'All' || p.cats.indexOf(filter) !== -1; });
+    $('filters').innerHTML = ['All','Java','Web','Networking'].map(function(f){
+      return '<button type="button" class="pill" data-f="' + f + '" aria-pressed="' + (f === filter) + '">' + f + '</button>';
+    }).join('');
+    $('count').textContent = 'Showing ' + shown.length + ' of ' + projects.length;
+    $('grid').innerHTML = shown.map(function(p){
+      return '<article class="proj card fade"><div class="top"><span class="code" aria-hidden="true">' + esc(p.code) + '</span><span class="kind">' + esc(p.kind) + '</span></div>' +
+        '<h3>' + esc(p.title) + '</h3><p>' + esc(p.text) + '</p><div class="tags">' + p.tags.map(function(t){ return '<span class="tag-line">' + esc(t) + '</span>'; }).join('') + '</div></article>';
+    }).join('');
+  }
+  $('filters').addEventListener('click', function(e){
+    var b = e.target.closest('button[data-f]'); if (!b) return;
+    filter = b.getAttribute('data-f'); renderProjects();
+    var nb = $('filters').querySelector('button[data-f="' + filter + '"]'); if (nb) nb.focus();
+  });
+  renderProjects();
+
+  /* skill map */
+  var paths = [
+    { id:'cloud', label:'Cloud engineer', note:'Building on my Cloud Computing module and AWS and Azure fundamentals, with Linux and Python for the hands-on side and networking knowledge from my Network+ training.' },
+    { id:'devops', label:'DevOps', note:'Automation is the thread: PowerShell and Python scripting, Linux, and cloud platforms, plus the habit of keeping live operations running smoothly.' },
+    { id:'infra', label:'IT & infrastructure', note:'Direct experience from my IT support traineeship: Windows Server, Active Directory, Group Policy, Microsoft 365 and ticketing tools, backed by A+ and Network+ training.' },
+    { id:'consult', label:'Tech consulting', note:'Three years leading teams and running multi-site operations, years of public speaking as a lead tour guide, and a technical foundation in cloud and Microsoft 365.' }
+  ];
+  var skills = [
+    ['AWS',['cloud','devops']],['Azure',['cloud','devops','consult']],['Linux',['cloud','devops','infra']],
+    ['PowerShell',['devops','infra']],['Python',['cloud','devops']],['Networking',['cloud','infra']],
+    ['Windows Server',['infra']],['Active Directory',['infra']],['Group Policy',['infra']],
+    ['Microsoft 365',['infra','consult']],['Hardware troubleshooting',['infra']],['ServiceNow',['infra','consult']],
+    ['Java',[]],['JavaScript',[]],['HTML & CSS',[]],
+    ['Team leadership',['consult','devops']],['Hiring',['consult']],['Scheduling & operations',['consult','infra']],['Public speaking',['consult']]
+  ];
+  var pathId = 'cloud';
+  function renderSkills(){
+    var p = paths.filter(function(x){ return x.id === pathId; })[0];
+    var n = skills.filter(function(s){ return s[1].indexOf(pathId) !== -1; }).length;
+    $('paths').innerHTML = paths.map(function(x){ return '<button type="button" class="pill" data-p="' + x.id + '" aria-pressed="' + (x.id === pathId) + '">' + esc(x.label) + '</button>'; }).join('');
+    $('chips').innerHTML = skills.map(function(s){ return '<span class="chip' + (s[1].indexOf(pathId) !== -1 ? ' on' : '') + '">' + esc(s[0]) + '</span>'; }).join('');
+    $('path-card').innerHTML = '<div class="fade"><p class="eyebrow" style="font-size:12px;color:var(--accent)">' + esc(p.label) + '</p>' +
+      '<p class="big">' + n + '<small> relevant skills</small></p><p class="note">' + esc(p.note) + '</p></div>';
+  }
+  $('paths').addEventListener('click', function(e){
+    var b = e.target.closest('button[data-p]'); if (!b) return;
+    pathId = b.getAttribute('data-p'); renderSkills();
+    var nb = $('paths').querySelector('button[data-p="' + pathId + '"]'); if (nb) nb.focus();
+  });
+  renderSkills();
+
+  /* copy email */
+  var copyBtn = $('copy'), copyLabel = copyBtn.querySelector('span'), copyT;
+  copyBtn.addEventListener('click', function(){
+    function done(msg){ copyLabel.textContent = msg; clearTimeout(copyT); copyT = setTimeout(function(){ copyLabel.textContent = 'Copy email'; }, 2000); }
+    try { navigator.clipboard.writeText('qaysm90@gmail.com').then(function(){ done('Copied!'); }, function(){ done('Copy failed'); }); }
+    catch(e){ done('Copy failed'); }
+  });
+})();
+</script>
+</body>
+</html>
